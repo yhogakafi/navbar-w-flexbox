@@ -5,6 +5,7 @@
 
 body {
   font-family: Inter, sans-serif;
+  overflow: hidden;
 }
 
 /* Navbar */
@@ -46,7 +47,7 @@ nav ul li a:hover {
 
 /* hamburger menu */
 .hm-toggle {
-  display: flex;
+  display: none;
   flex-direction: column;
   height: 20px;
   justify-content: space-between;
@@ -58,8 +59,9 @@ nav ul li a:hover {
   width: 28px;
   height: 28px;
   top: -4px;
-  opacity: 0.5;
+  opacity: 0;
   cursor: pointer;
+  z-index: 2;
 }
 
 .hm-toggle span {
@@ -68,6 +70,7 @@ nav ul li a:hover {
   height: 4px;
   background-color: rgb(177, 81, 97);
   border-radius: 10px;
+  transition: 0.5s;
 }
 
 /* hamburger menu animation */
@@ -80,13 +83,16 @@ nav ul li a:hover {
 }
 
 .hm-toggle input:checked ~ span:nth-child(2) {
-  transform: rotate(45deg);
+  transform: rotate(45deg) translate(-1px, -2px);
 }
 
 .hm-toggle input:checked ~ span:nth-child(4) {
-  transform: rotate(-45deg);
+  transform: rotate(-45deg) translate(0px, 1px);
 }
 
+.hm-toggle input:checked ~ span:nth-child(3) {
+  opacity: 0;
+}
 /* responsive tablet*/
 @media screen and (max-width: 768px) {
   nav ul {
@@ -97,6 +103,27 @@ nav ul li a:hover {
 /* responsive mobile */
 @media screen and (max-width: 576px) {
   nav ul {
-    display: none;
+    position: absolute;
+    right: 0%;
+    top: 5%;
+    padding-top: 5%;
+    width: 50%;
+    height: 50vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background-color: pink;
+    z-index: -1;
+    transform: translateX(100%);
+    transition: 0.5s;
+    border-radius: 15px;
+  }
+
+  nav ul.slide {
+    transform: translateX(0);
+  }
+
+  .hm-toggle {
+    display: flex;
   }
 }
