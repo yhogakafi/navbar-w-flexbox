@@ -13,8 +13,9 @@ nav {
   display: flex;
   background-color: pink;
   justify-content: space-around;
-  padding: 20px 0;
+  height: 80px;
   color: rgb(177, 81, 97);
+  align-items: center;
 }
 
 nav .logo h4 {
@@ -36,4 +37,66 @@ nav ul li {
 nav ul li a {
   color: rgb(177, 81, 97);
   text-decoration: none;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: white;
+}
+
+/* hamburger menu */
+.hm-toggle {
+  display: flex;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.hm-toggle input {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: -4px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.hm-toggle span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background-color: rgb(177, 81, 97);
+  border-radius: 10px;
+}
+
+/* hamburger menu animation */
+.hm-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+
+.hm-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+
+.hm-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.hm-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg);
+}
+
+/* responsive tablet*/
+@media screen and (max-width: 768px) {
+  nav ul {
+    width: 50%;
+  }
+}
+
+/* responsive mobile */
+@media screen and (max-width: 576px) {
+  nav ul {
+    display: none;
+  }
 }
